@@ -18,3 +18,13 @@ Route::get('/resume', 'FrontController@resume')->name('resume');
 Route::get('/portfolio', 'FrontController@portfolio')->name('portfolio');
 Route::get('/blog', 'FrontController@blog')->name('blog');
 Route::get('/contact', 'FrontController@contact')->name('contact');
+
+
+
+Route::prefix('admin')->middleware('auth')->group(function (){
+    Route::get('/', 'AdminController@index')->name('admin.index');
+    Route::get('/education', 'AdminController@index')->name('admin.index');
+});
+
+
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
