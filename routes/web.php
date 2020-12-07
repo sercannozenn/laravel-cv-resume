@@ -28,6 +28,14 @@ Route::prefix('admin')->middleware('auth')->group(function (){
     Route::post('/education-delete', 'EducationController@delete')->name('admin.education.delete');
     Route::get('/education-add', 'EducationController@addShow')->name('admin.education.add');
     Route::post('/education-add', 'EducationController@add');
+
+    Route::get('/experience-list', 'ExperienceController@list')->name('admin.experience.list');
+    Route::get('/experience-add', 'ExperienceController@addShow')->name('admin.experience.add');
+    Route::post('/experience-add', 'ExperienceController@add');
+    Route::post('/experience-change-status', 'ExperienceController@changeStatus')->name('admin.experience.changeStatus');
+    Route::post('/experience-change-active', 'ExperienceController@activeStatus')->name('admin.experience.activeStatus');
+    Route::post('/experience-delete', 'ExperienceController@delete')->name('admin.experience.delete');
+
 });
 
 
