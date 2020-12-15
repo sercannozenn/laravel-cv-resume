@@ -78,6 +78,16 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="order">Görüntülencek Eğitim Sırası</label>
+                            <input type="text" class="form-control" name="order" id="order"
+                                   placeholder="Görüntülencek Eğitim Sırası"
+                                   value="{{ $education ? $education->order : '' }}">
+                            @error('order')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
                             <div class="form-check form-check-success">
                                 <label class="form-check-label" for="status">
                                     <?php

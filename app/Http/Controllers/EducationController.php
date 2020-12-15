@@ -58,6 +58,7 @@ class EducationController extends Controller
     public function add(EducationAddRequest $request)
     {
         $status = 0;
+        $order = $request->order;
         if (isset($request->status))
         {
             $status = 1;
@@ -72,7 +73,8 @@ class EducationController extends Controller
                     "university_name" => $request->university_name,
                     "university_branch" => $request->university_branch,
                     "description" => $request->description,
-                    "status" => $status
+                    "status" => $status,
+                    "order" => $order ? $order : 999
                 ]);
             alert()->success('Başarılı', $id . " ID'sine sahip Eğitim bilgisi güncellendi")->showConfirmButton('Tamam', '#3085d6')->persistent(true, true);
             return redirect()->route('admin.education.list');
@@ -84,7 +86,8 @@ class EducationController extends Controller
                 "university_name" => $request->university_name,
                 "university_branch" => $request->university_branch,
                 "description" => $request->description,
-                "status" => $status
+                "status" => $status,
+                "order" => $order ? $order : 999
             ]);
 
             alert()->success('Başarılı', 'Eğitim bilgisi eklendi')->showConfirmButton('Tamam', '#3085d6')->persistent(true, true);

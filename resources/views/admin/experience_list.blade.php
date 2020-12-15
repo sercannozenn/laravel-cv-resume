@@ -36,6 +36,7 @@
                                 <th>#</th>
                                 <th>Düzenle</th>
                                 <th>Sil</th>
+                                <th>Sıralama</th>
                                 <th>Çalışma Tarihi</th>
                                 <th>Pozisyon</th>
                                 <th>Firma</th>
@@ -49,13 +50,15 @@
                             <tbody>
                             @foreach($list as $item)
                                 <tr id="{{ $item->id }}">
+                                    <td>{{ $item->id }}</td>
+
                                     <td><a href="{{ route('admin.experience.add', ['experienceID' => $item->id]) }}"
                                            class="btn btn-warning editEducation">Düzenle <i class="fa fa-edit"></i></a>
                                     </td>
                                     <td><a data-id="{{ $item->id }}" href="javascript:void(0)"
                                            class="btn btn-danger deleteEducation">Sil <i class="fa fa-trash"></i></a>
                                     </td>
-                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->order }}</td>
                                     <td>{{ $item->date }}</td>
                                     <td>{{ $item->task_name }}</td>
                                     <td>{{ $item->company_name }}</td>

@@ -12,4 +12,9 @@ class Education extends Model
     protected $table = "education";
     protected $primaryKey = "id";
     protected $guarded = [];
+
+    public function scopeStatusActive($query)
+    {
+        return $query->where('status', 1);
+    }
 }

@@ -35,6 +35,7 @@
                                 <th>#</th>
                                 <th>Düzenle</th>
                                 <th>Sil</th>
+                                <th>Sıralama</th>
                                 <th>Eğitim Tarihi</th>
                                 <th>Üniversite</th>
                                 <th>Bölüm</th>
@@ -47,13 +48,15 @@
                             <tbody>
                             @foreach($list as $item)
                                 <tr id="{{ $item->id }}">
+                                    <td>{{ $item->id }}</td>
                                     <td><a href="{{ route('admin.education.add', ['educationID' => $item->id]) }}"
                                            class="btn btn-warning editEducation">Düzenle <i class="fa fa-edit"></i></a>
                                     </td>
                                     <td><a data-id="{{ $item->id }}" href="javascript:void(0)"
                                            class="btn btn-danger deleteEducation">Sil <i class="fa fa-trash"></i></a>
                                     </td>
-                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->order }}</td>
+
                                     <td>{{ $item->education_date }}</td>
                                     <td>{{ $item->university_name }}</td>
                                     <td>{{ $item->university_branch }}</td>

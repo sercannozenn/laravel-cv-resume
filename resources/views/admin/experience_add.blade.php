@@ -77,7 +77,15 @@
                                       rows="7"
                                       placeholder="Açıklama">{{ $experience ? $experience->description : '' }}</textarea>
                         </div>
-
+                        <div class="form-group">
+                            <label for="order">Görüntülencek Deneyim Sırası</label>
+                            <input type="text" class="form-control" name="order" id="order"
+                                   placeholder="Görüntülencek Deneyim Sırası"
+                                   value="{{ $experience ? $experience->order : '' }}">
+                            @error('order')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <div class="form-group">
                             <div class="form-check form-check-success">
                                 <label class="form-check-label" for="status">
