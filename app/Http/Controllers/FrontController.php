@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Education;
 use App\Models\Experience;
+use App\Models\PersonalInformation;
+use App\Models\SocialMedia;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -12,16 +14,18 @@ class FrontController extends Controller
     {
         $educationList = Education::query()
             ->statusActive()
-//            ->where('status', 1)
             ->select('education_date', 'university_name', 'university_branch', 'description')
             ->orderBy('order', 'ASC')
             ->get();
 
-        $experienceList= Experience::query()
+        $experienceList = Experience::query()
             ->where('status', 1)
             ->select('task_name', 'company_name', 'description', 'date')
             ->orderBy('order', 'ASC')
             ->get();
+
+
+
 
         return view('pages.index', compact('educationList', 'experienceList'));
     }

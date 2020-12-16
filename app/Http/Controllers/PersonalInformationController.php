@@ -21,11 +21,15 @@ class PersonalInformationController extends Controller
         $this->validate($request,
             [
                 'cv' => 'mimes:pdf,doc,docx',
-                'image' => 'mimes:jpeg,jpg,png'
+                'image' => 'mimes:jpeg,jpg,png',
+                'title_left' => 'required',
+                'title_right' => 'required'
             ],
             [
                 'cv.mimes' => 'Seçilen cv yalnızca .pdf, .doc, .docx uzantılı olabilir.',
-                'image.mimes' => 'Seçilen resim yalnızca .jpeg, .jpg, .png uzantılı olabilir.'
+                'image.mimes' => 'Seçilen resim yalnızca .jpeg, .jpg, .png uzantılı olabilir.',
+                'title_left.required' => 'Lütfen eğitim listesinin başlığını yazın.',
+                'title_right.required' => 'Lütfen deneyim listesinin başlığını yazın'
             ]);
 
         $information = PersonalInformation::find(1);
@@ -34,15 +38,9 @@ class PersonalInformationController extends Controller
             $file = $request->file('cv');
             $extension = $file->getClientOriginalExtension();
             $fileOriginalName = $file->getClientOriginalName();
-//            ozgecmis.pdf
             $explode = explode('.', $fileOriginalName);
-//[
-//    'ozgeçmız dsad  dsadas  ',
-//    'ozgecmiz-dsad--dsadas--',
-//    'pdf'
-//]
+
             $fileOriginalName = Str::slug($explode[0], '-') . '_' . now()->format('d-m-Y_H-i-s') . '.' . $extension;
-//            'ozgecmis-dasd-dsaadas--_25-10-20_13-05-25.pdf'
             Storage::putFileAs('public/cv', $file, $fileOriginalName);
             $information->cv = 'public/cv/' . $fileOriginalName;
         }
@@ -64,8 +62,11 @@ class PersonalInformationController extends Controller
         $information->main_title = $request->main_title;
         $information->about_text = $request->about_text;
         $information->btn_contact_text = $request->btn_contact_text;
+        $information->btn_contact_link = $request->btn_contact_link;
         $information->small_title_left = $request->small_title_left;
+        $information->title_left = $request->title_left;
         $information->small_title_right = $request->small_title_right;
+        $information->title_right = $request->title_right;
         $information->full_name = $request->full_name;
         $information->task_name = $request->task_name;
         $information->birthday = $request->birthday;
