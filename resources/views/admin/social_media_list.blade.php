@@ -58,7 +58,7 @@
 
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->link }}</td>
-                                    <td>{{ $item->icon }}</td>
+                                    <td>{!! $item->icon !!}</td>
                                     <td>
                                         @if ($item->status)
                                             <a data-id="{{ $item->id }}" href="javascript:void(0)"
