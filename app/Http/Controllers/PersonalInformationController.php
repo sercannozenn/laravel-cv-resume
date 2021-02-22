@@ -42,7 +42,7 @@ class PersonalInformationController extends Controller
 
             $fileOriginalName = Str::slug($explode[0], '-') . '_' . now()->format('d-m-Y_H-i-s') . '.' . $extension;
             Storage::putFileAs('public/cv', $file, $fileOriginalName);
-            $information->cv = 'public/cv/' . $fileOriginalName;
+            $information->cv = 'cv/' . $fileOriginalName;
         }
 
         if ($request->file('image'))
@@ -54,7 +54,7 @@ class PersonalInformationController extends Controller
             $fileOriginalName = Str::slug($explode[0], '-') . '_' . now()->format('d-m-Y_H-i-s') . '.' . $extension;
 
             Storage::putFileAs('public/image', $file, $fileOriginalName);
-            $information->image = 'public/image/' . $fileOriginalName;
+            $information->image = 'image/' . $fileOriginalName;
 
         }
 
