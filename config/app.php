@@ -178,7 +178,8 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         \App\Providers\FortifyServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
-
+        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
     ],
 
     /*
@@ -232,6 +233,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

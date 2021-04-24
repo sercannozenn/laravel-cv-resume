@@ -1,0 +1,9 @@
+.btn-download-cv {
+    padding:6px 20px;
+}
+main .portfolio-wrapper .portfolio-item{
+    width: calc(50% - 10.5px);
+}
+figure{
+    cursor: pointer;
+}

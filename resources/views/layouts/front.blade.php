@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Mukta:300,400,500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/vendors/@fortawesome/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/live-resume.css') }}">
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
     @yield('css')
 </head>
 
@@ -22,7 +23,7 @@
         </div>
         <h1 class="profile-name">{{ $personal->full_name }}</h1>
         <div class="text-center">
-            <span class="badge badge-white badge-pill profile-designation">{{ $personal->task_name }}</span>
+            <span class="badge badge-white badge-pill profile-designation"><b>{!! $personal->task_name !!}</b></span>
         </div>
         <nav class="social-links">
             @foreach($socialMediaData as $item)
@@ -41,7 +42,7 @@
                 <p>Mail : {{ $personal->mail }}</p>
                 <p>Adres : {{ $personal->address }}</p>
                 <a href="{{ asset('storage/'. $personal->cv) }}" target="_blank" class="btn btn-download-cv btn-primary rounded-pill">
-                    <img src="assets/images/download.svg" alt="download" class="btn-img">Özgeçmişimi İndir
+                    <img src="{{ asset('assets/images/download.svg') }}" alt="download" class="btn-img">Özgeçmişimi İndir
                 </a>
             </div>
         </div>

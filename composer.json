@@ -16,7 +16,8 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "rap2hpoutre/laravel-log-viewer": "^1.7",
-        "realrashid/sweet-alert": "^3.1"
+        "realrashid/sweet-alert": "^3.1",
+        "unisharp/laravel-filemanager": "^2.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",

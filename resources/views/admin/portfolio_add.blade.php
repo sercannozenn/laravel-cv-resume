@@ -3,9 +3,9 @@
     Portfolio Yönetimi
 @endsection
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/ckeditor/samples/css/samples.css') }}">
-    <link rel="stylesheet" type="text/css"
-          href="{{ asset('assets/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css') }}">
+{{--    <link rel="stylesheet" type="text/css" href="{{ asset('assets/ckeditor/samples/css/samples.css') }}">--}}
+{{--    <link rel="stylesheet" type="text/css"--}}
+{{--          href="{{ asset('assets/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css') }}">--}}
 @endsection
 
 @section('content')
@@ -121,13 +121,24 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
-    <script src=" {{ asset('assets/ckeditor/samples/js/sample.js') }}"></script>
+{{--    <script src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>--}}
+{{--    <script src=" {{ asset('assets/ckeditor/samples/js/sample.js') }}"></script>--}}
+    <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+
     <script>
-        var about = CKEDITOR.replace('about', {
-            extraAllowedContent: 'div',
-            height: 150
-        });
+        var options = {
+            filebrowserImageBrowseUrl: '/admin/laravel-filemanager?type=Images',
+            filebrowserImageUploadUrl: '/admin/laravel-filemanager/upload?type=Images&_token=',
+            filebrowserBrowseUrl: '/admin/laravel-filemanager?type=Files',
+            filebrowserUploadUrl: '/admin/laravel-filemanager/upload?type=Files&_token='
+        };
+        var about = CKEDITOR.replace('about', options
+        // {
+            // extraAllowedContent: 'div',
+            // height: 150,
+
+        // }
+        );
         @isset($portfolio)
         $('#createButton').click(function ()
         {

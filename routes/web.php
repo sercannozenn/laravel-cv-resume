@@ -17,6 +17,7 @@ Route::middleware('front.data.share')->group(function ()
     Route::get('/', 'FrontController@index')->name('index');
     Route::get('/resume', 'FrontController@resume')->name('resume');
     Route::get('/portfolio', 'FrontController@portfolio')->name('portfolio');
+    Route::get('/portfolio/{id}', 'FrontController@portfolioDetail')->name('portfolio.detail')->whereNumber('id');
     Route::get('/blog', 'FrontController@blog')->name('blog');
     Route::get('/contact', 'FrontController@contact')->name('contact');
 
@@ -67,7 +68,9 @@ Route::prefix('admin')->middleware('auth')->group(function ()
     Route::put('portfolio/images/{id}', 'PortfolioController@featureImage')->name('portfolio.featureImage')->whereNumber('id');
     Route::post('portfolio/images/{id}/change-status', 'PortfolioController@changeStatusImage')->name('portfolio.changeStatusImage')->whereNumber('id');
 
-
+    Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+        \UniSharp\LaravelFilemanager\Lfm::routes();
+    });
 });
 
 
